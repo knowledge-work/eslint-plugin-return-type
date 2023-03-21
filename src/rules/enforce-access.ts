@@ -30,7 +30,7 @@ export = createRule<Options, MessageIds>({
       },
     ],
     messages: {
-      enforceAccess: '{{typeName}} must be used.',
+      enforceAccess: '{{typeName}} must be accessed.',
     },
   },
   defaultOptions: [{ typeNames: [] }],
