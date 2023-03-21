@@ -6,6 +6,9 @@
     "type": "git",
     "url": "https://github.com/knowledge-work/eslint-plugin-return-type.git"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "keywords": [
     "eslint",
     "eslintplugin",
