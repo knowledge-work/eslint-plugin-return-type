@@ -13,7 +13,7 @@
 
 ## Examples
 
-`typeNames: ['CustomError', 'ExperimentalValue']`
+`typeNames: ['\w*Error', 'ExperimentalValue']`
 
 ```ts
 function example() {

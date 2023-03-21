@@ -114,5 +114,8 @@ function findMatchedTypeName(
   }
 
   const typeName = checker.typeToString(type)
-  return targetNames.includes(typeName) ? typeName : null
+  const targetNameRegexps = targetNames.map((name) => new RegExp(`^${name}$`))
+  const matched = targetNameRegexps.find((regexp) => regexp.test(typeName))
+
+  return matched ? matched.toString() : null
 }

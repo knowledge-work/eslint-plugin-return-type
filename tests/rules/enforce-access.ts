@@ -36,6 +36,9 @@ const commonCode = `
     val: null,
     err,
   });
+
+  class CustomError extends Error {}
+
 `
 
 ruleTester.run('enforce-access', rule, {
@@ -78,6 +81,15 @@ ruleTester.run('enforce-access', rule, {
         const res = await example();
       `,
       options: [{ typeNames: ['Err<Error>'] }],
+    },
+    {
+      code: `
+        const example = () => {
+          return new CustomError('error')
+        }
+        example();
+      `,
+      options: [{ typeNames: ['Error'] }],
     },
   ],
   invalid: [
@@ -129,11 +141,21 @@ ruleTester.run('enforce-access', rule, {
     {
       code: `${commonCode}
         const example = () => {
-          return usecaseResultError(new Error('error'))
+          return usecaseResultError(new CustomError('error'))
         }
         await example()
       `,
-      options: [{ typeNames: ['Err<Error>'] }],
+      options: [{ typeNames: ['Err<\\w*Error>'] }],
+      errors: [{ messageId: 'enforceAccess' }],
+    },
+    {
+      code: `${commonCode}
+        const example = () => {
+          return new CustomError('error')
+        }
+        example();
+      `,
+      options: [{ typeNames: ['\\w*Error'] }],
       errors: [{ messageId: 'enforceAccess' }],
     },
   ],

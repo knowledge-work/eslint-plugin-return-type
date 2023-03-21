@@ -27,7 +27,7 @@ npm install eslint-plugin-return-type --save-dev
 "rules": {
   "return-type/enforce-access": [
     "error",
-    { "typeNames": ["SomeType"] }
+    { "typeNames": ["SomeType", "\w*Error"] }
 }
 ```
 
