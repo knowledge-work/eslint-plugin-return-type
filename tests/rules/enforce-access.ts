@@ -91,6 +91,20 @@ ruleTester.run('enforce-access', rule, {
       `,
       options: [{ typeNames: ['Error'] }],
     },
+    {
+      code: `${commonCode}
+        const example = () => usecaseResultError(new Error('error'))
+        const arr = [example()];
+      `,
+      options: [{ typeNames: ['Err<Error>'] }],
+    },
+    {
+      code: `${commonCode}
+        const example = () => usecaseResultError(new Error('error'))
+        otherFunction({ result: example() });
+      `,
+      options: [{ typeNames: ['Err<Error>'] }],
+    },
   ],
   invalid: [
     {

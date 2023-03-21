@@ -68,6 +68,14 @@ export = createRule<Options, MessageIds>({
         return
       }
 
+      // - 値が配列やオブジェクトに格納されていたらそれ越しに参照されるとみなして終了
+      if (
+        (node.parent.type === 'ArrayExpression' && node.parent.elements.includes(node as any)) ||
+        (node.parent.type === 'Property' && node.parent.value === node)
+      ) {
+        return
+      }
+
       // - 値が別の関数に渡っていたら参照されているとみなして終了
       if (
         (node.parent.type === 'CallExpression' || node.parent.type === 'NewExpression') &&
