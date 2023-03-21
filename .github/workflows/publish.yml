@@ -28,7 +28,7 @@ jobs:
         run: |
           git config user.name '[bot] github action (${{ github.workflow }})'
           git config user.email 'engineer-team@knowledgework.com'
-          yarn release
+          yarn version --patch
           echo "new_version=$(jq -r .version package.json)" >> "$GITHUB_OUTPUT"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
