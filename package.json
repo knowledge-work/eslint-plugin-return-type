@@ -35,7 +35,7 @@
     "postversion": "git push --tags && git push origin main && yarn publish ."
   },
   "dependencies": {
-    "@typescript-eslint/utils": "5.59.0"
+    "@typescript-eslint/utils": "5.59.1"
   },
   "devDependencies": {
     "@types/jest": "29.5.1",
