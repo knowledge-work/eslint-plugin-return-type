@@ -13,7 +13,6 @@ export = createRule<Options, MessageIds>({
     docs: {
       description:
         'Enforces the access of specific return types in functions and ensures they are referenced properly.',
-      recommended: false,
     },
     schema: [
       {
