@@ -1,12 +1,13 @@
 import rule from '../../src/rules/enforce-access'
-import { TSESLint } from '@typescript-eslint/utils'
+import { RuleTester } from '@typescript-eslint/rule-tester'
 
-export const ruleTester = new TSESLint.RuleTester({
+export const ruleTester = new RuleTester({
   parser: require.resolve('@typescript-eslint/parser'),
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: './tsconfig.test.json',
+    tsconfigRootDir: `${__dirname}/../../tests_fixture`,
+    project: '../tsconfig.test.json',
   },
 })
 
