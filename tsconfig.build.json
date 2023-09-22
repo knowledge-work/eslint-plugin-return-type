@@ -3,7 +3,7 @@
   "compilerOptions": {
     "noEmit": false,
     "target": "ES2015",
-    "module": "CommonJS",
+    "module": "NodeNext",
     "outDir": "./dist",
     "sourceMap": true,
     "declaration": false
