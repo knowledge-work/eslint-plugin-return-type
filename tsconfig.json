@@ -1,23 +1,19 @@
 {
   "compilerOptions": {
-    "target": "ES2015",
-    "module": "CommonJS",
+    "noEmit": true,
     "rootDir": "./src",
-    "outDir": "./dist",
-    "sourceMap": true,
-    "declaration": false,
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "types": ["node"],
     "typeRoots": ["./", "./node_modules/@types"]
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "tests"]
+  "include": ["src", "tests"],
+  "exclude": ["node_modules"]
 }
