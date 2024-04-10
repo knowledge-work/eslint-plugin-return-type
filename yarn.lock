@@ -2510,10 +2510,10 @@ prelude-ls@^1.2.1:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
 
-prettier-config-kwork@0.0.15:
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/prettier-config-kwork/-/prettier-config-kwork-0.0.15.tgz#209aa23d29296995247bf63505f952dd250e3325"
-  integrity sha512-BrX6/fEC5B2pfq0ZDA+UkKHO5G666E0B/Q6c1kfrJ+Vmz8+SbBMVCiuAEbuWrZgQM1RBH9VUq3MQH6BrRLH53w==
+prettier-config-kwork@0.0.16:
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/prettier-config-kwork/-/prettier-config-kwork-0.0.16.tgz#1b8718969aefa977ef8c2f66963f94e306fde80e"
+  integrity sha512-+2mlJJpsTfctxbyzdkQfabBqUzelRDhQ1VZts8DpykFyl9moTNTW72lwj5AshPrVRncKvv8gfuCnGNdLiSZUWg==
 
 prettier@3.2.5:
   version "3.2.5"
