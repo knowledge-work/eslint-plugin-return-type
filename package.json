@@ -47,7 +47,7 @@
     "npm-run-all2": "6.1.2",
     "prettier": "3.2.5",
     "prettier-config-kwork": "0.0.17",
-    "rimraf": "5.0.5",
+    "rimraf": "5.0.6",
     "ts-jest": "29.1.2",
     "typescript": "5.4.5"
   }
