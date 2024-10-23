@@ -38,7 +38,7 @@
     "@typescript-eslint/utils": "7.2.0"
   },
   "devDependencies": {
-    "@types/jest": "29.5.13",
+    "@types/jest": "29.5.14",
     "@types/node": "20.16.14",
     "@typescript-eslint/parser": "7.2.0",
     "@typescript-eslint/rule-tester": "7.2.0",
