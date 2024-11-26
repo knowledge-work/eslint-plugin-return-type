@@ -2486,10 +2486,10 @@ prettier-config-kwork@0.0.23:
   resolved "https://registry.yarnpkg.com/prettier-config-kwork/-/prettier-config-kwork-0.0.23.tgz#4329e83c52f08ff04298f293abae5a36e3069113"
   integrity sha512-6Q+r/akVlaVCBg7qRaA4Aiq///vpCi590eBE3O7iASaiJPbzRs/DAx47tTxlfIZ/C0XzdItOhxcLpTPkyM3NEg==
 
-prettier@3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.4.0.tgz#9dcd5e617cf103db8e4bd00924baecfd32bf9971"
-  integrity sha512-/OXNZcLyWkfo13ofOW5M7SLh+k5pnIs07owXK2teFpnfaOEcycnSy7HQxldaVX1ZP/7Q8oO1eDuQJNwbomQq5Q==
+prettier@3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.4.1.tgz#e211d451d6452db0a291672ca9154bc8c2579f7b"
+  integrity sha512-G+YdqtITVZmOJje6QkXQWzl3fSfMxFwm1tjTyo9exhkmWSqC4Yhd1+lug++IlR2mvRVAxEDDWYkQdeSztajqgg==
 
 pretty-format@^29.0.0, pretty-format@^29.7.0:
   version "29.7.0"
