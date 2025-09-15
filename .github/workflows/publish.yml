@@ -11,7 +11,7 @@ concurrency:
 
 permissions:
   id-token: write # Required for OIDC
-  contents: read
+  contents: write # create tag and release
 
 jobs:
   publish:
