@@ -35,13 +35,13 @@
     "publish": "npm publish . --access public --registry=https://registry.npmjs.org && git push origin main && git push --tags"
   },
   "dependencies": {
-    "@typescript-eslint/utils": "7.18.0"
+    "@typescript-eslint/utils": "8.53.1"
   },
   "devDependencies": {
     "@types/jest": "30.0.0",
     "@types/node": "24.10.9",
-    "@typescript-eslint/parser": "7.18.0",
-    "@typescript-eslint/rule-tester": "7.18.0",
+    "@typescript-eslint/parser": "8.53.1",
+    "@typescript-eslint/rule-tester": "8.53.1",
     "eslint": "8.57.1",
     "jest": "30.2.0",
     "npm-run-all2": "6.2.6",
