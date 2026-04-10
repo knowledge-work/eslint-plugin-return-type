@@ -42,7 +42,7 @@
     "@types/node": "24.12.0",
     "@typescript-eslint/parser": "7.18.0",
     "@typescript-eslint/rule-tester": "7.18.0",
-    "eslint": "8.57.1",
+    "eslint": "10.2.0",
     "jest": "30.3.0",
     "npm-run-all2": "6.2.6",
     "prettier": "3.8.1",
