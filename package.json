@@ -48,7 +48,7 @@
     "prettier": "3.9.6",
     "prettier-config-kwork": "0.0.34",
     "rimraf": "5.0.10",
-    "ts-jest": "29.4.11",
+    "ts-jest": "29.4.12",
     "typescript": "6.0.3"
   }
 }
