@@ -33,7 +33,7 @@
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
     "preversion": "echo \"Run check for version $npm_package_version\" && run-s clean build test",
-    "release": "npm publish --access public && git push --follow-tags origin main"
+    "release": "pnpm publish --access public --provenance && git push --follow-tags origin main"
   },
   "devDependencies": {
     "@types/node": "26.6.6",
@@ -46,5 +46,12 @@
     "typescript": "6.0.3",
     "vitest": "5.1.0"
   },
-  "packageManager": "pnpm@12.20.0"
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "26.13.1",
+      "onFail": "download"
+    }
+  },
+  "packageManager": "pnpm@12.20.0+sha512.6ccc74997ccef4e67999788e18dbfbfa583e2a849668668db4707b6a8306662f47156e650232a985bd3ec24cf9364c1aa154d37e51ed7aac62c1cd1e3afc80c3"
 }
