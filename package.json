@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-return-type",
-  "version": "1.0.35",
+  "version": "1.1.0",
   "description": "ESlint plugin to enforces the access of specific return types.",
   "keywords": [
     "access",
