@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-return-type",
-  "version": "1.0.34",
+  "version": "1.0.35",
   "description": "ESlint plugin to enforces the access of specific return types.",
   "keywords": [
     "access",
@@ -33,7 +33,7 @@
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
     "preversion": "echo \"Run check for version $npm_package_version\" && run-s clean build test",
-    "publish": "npm publish . --access public --registry=https://registry.npmjs.org && git push origin main && git push --tags"
+    "release": "npm publish --access public && git push --follow-tags origin main"
   },
   "devDependencies": {
     "@types/node": "26.6.6",
