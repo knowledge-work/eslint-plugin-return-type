@@ -1,13 +1,16 @@
 import rule from "../../src/rules/enforce-access";
+import parser from "@typescript-eslint/parser";
 import { RuleTester } from "@typescript-eslint/rule-tester";
 
 export const ruleTester = new RuleTester({
-  parser: require.resolve("@typescript-eslint/parser"),
-  parserOptions: {
+  languageOptions: {
+    parser,
     ecmaVersion: "latest",
     sourceType: "module",
-    tsconfigRootDir: `${__dirname}/../../tests_fixture`,
-    project: "../tsconfig.test.json",
+    parserOptions: {
+      tsconfigRootDir: `${__dirname}/../../tests_fixture`,
+      project: "../tsconfig.test.json",
+    },
   },
 });
 
