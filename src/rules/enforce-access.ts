@@ -1,18 +1,31 @@
-import { ESLintUtils, TSESTree } from "@typescript-eslint/utils";
-import ts from "typescript";
+import type ts from "typescript";
 
-import { createRule } from "../utils";
+import type { Node, ParserServicesWithTypeInformation, RuleContext, RuleModule } from "../types";
 
 type MessageIds = "enforceAccess";
-type Options = [{ typeNames: string[] }];
+type Options = [{ typeNames?: string[] }?];
+type Context = Readonly<RuleContext<MessageIds, Options>>;
 
-export = createRule<Options, MessageIds>({
-  name: __filename,
+const getParserServices = (context: Context): ParserServicesWithTypeInformation => {
+  // Same check and message as ESLintUtils.getParserServices:
+  // https://github.com/typescript-eslint/typescript-eslint/blob/v8.72.2/packages/utils/src/eslint-utils/getParserServices.ts
+  const program = context.sourceCode.parserServices?.program;
+  const esTreeNodeToTSNodeMap = context.sourceCode.parserServices?.esTreeNodeToTSNodeMap;
+  if (!program || !esTreeNodeToTSNodeMap) {
+    throw new Error(
+      "You have used a rule which requires type information, but don't have parserOptions set to generate type information for this file. See https://typescript-eslint.io/getting-started/typed-linting for enabling linting with type information.",
+    );
+  }
+  return { program, esTreeNodeToTSNodeMap };
+};
+
+const rule: RuleModule<MessageIds, Options> = {
   meta: {
     type: "suggestion",
     docs: {
       description:
         "Enforces the access of specific return types in functions and ensures they are referenced properly.",
+      url: "https://github.com/knowledge-work/eslint-plugin-return-type/blob/main/docs/rules/enforce-access.md",
     },
     schema: [
       {
@@ -32,12 +45,12 @@ export = createRule<Options, MessageIds>({
       enforceAccess: "{{typeName}} must be accessed.",
     },
   },
-  defaultOptions: [{ typeNames: [] }],
-  create(context, [{ typeNames }]) {
-    const parserServices = ESLintUtils.getParserServices(context);
+  create(context) {
+    const typeNames = context.options[0]?.typeNames ?? [];
+    const parserServices = getParserServices(context);
     const checker = parserServices.program.getTypeChecker();
 
-    const checkAccess = (node: TSESTree.Node) => {
+    const checkAccess = (node: Node) => {
       const tsNode = parserServices.esTreeNodeToTSNodeMap.get(node);
       const type = checker.getTypeAtLocation(tsNode);
       const matchedTypeName = findMatchedTypeName(type, typeNames, checker);
@@ -69,7 +82,7 @@ export = createRule<Options, MessageIds>({
 
       // - 値が配列やオブジェクトに格納されていたらそれ越しに参照されるとみなして終了
       if (
-        (node.parent.type === "ArrayExpression" && node.parent.elements.includes(node as any)) ||
+        (node.parent.type === "ArrayExpression" && node.parent.elements?.includes(node)) ||
         (node.parent.type === "Property" && node.parent.value === node)
       ) {
         return;
@@ -107,7 +120,9 @@ export = createRule<Options, MessageIds>({
       AwaitExpression: checkAccess,
     };
   },
-});
+};
+
+export = rule;
 
 function findMatchedTypeName(
   type: ts.Type,
