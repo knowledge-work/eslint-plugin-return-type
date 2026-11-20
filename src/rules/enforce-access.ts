@@ -1,25 +1,25 @@
-import type {
-  ParserServicesWithTypeInformation,
-  TSESLint,
-  TSESTree,
-} from "@typescript-eslint/utils";
 import type ts from "typescript";
+
+import type { Node, ParserServicesWithTypeInformation, RuleContext, RuleModule } from "../types";
 
 type MessageIds = "enforceAccess";
 type Options = [{ typeNames?: string[] }?];
-type Context = Readonly<TSESLint.RuleContext<MessageIds, Options>>;
+type Context = Readonly<RuleContext<MessageIds, Options>>;
 
 const getParserServices = (context: Context): ParserServicesWithTypeInformation => {
-  const parserServices = context.sourceCode.parserServices;
-  if (!parserServices?.program || !parserServices.esTreeNodeToTSNodeMap) {
+  // Same check and message as ESLintUtils.getParserServices:
+  // https://github.com/typescript-eslint/typescript-eslint/blob/v8.72.2/packages/utils/src/eslint-utils/getParserServices.ts
+  const program = context.sourceCode.parserServices?.program;
+  const esTreeNodeToTSNodeMap = context.sourceCode.parserServices?.esTreeNodeToTSNodeMap;
+  if (!program || !esTreeNodeToTSNodeMap) {
     throw new Error(
       "You have used a rule which requires type information, but don't have parserOptions set to generate type information for this file. See https://typescript-eslint.io/getting-started/typed-linting for enabling linting with type information.",
     );
   }
-  return parserServices as ParserServicesWithTypeInformation;
+  return { program, esTreeNodeToTSNodeMap };
 };
 
-const rule: TSESLint.RuleModule<MessageIds, Options> = {
+const rule: RuleModule<MessageIds, Options> = {
   meta: {
     type: "suggestion",
     docs: {
@@ -45,13 +45,12 @@ const rule: TSESLint.RuleModule<MessageIds, Options> = {
       enforceAccess: "{{typeName}} must be accessed.",
     },
   },
-  defaultOptions: [{ typeNames: [] }],
   create(context) {
     const typeNames = context.options[0]?.typeNames ?? [];
     const parserServices = getParserServices(context);
     const checker = parserServices.program.getTypeChecker();
 
-    const checkAccess = (node: TSESTree.Node) => {
+    const checkAccess = (node: Node) => {
       const tsNode = parserServices.esTreeNodeToTSNodeMap.get(node);
       const type = checker.getTypeAtLocation(tsNode);
       const matchedTypeName = findMatchedTypeName(type, typeNames, checker);
@@ -83,7 +82,7 @@ const rule: TSESLint.RuleModule<MessageIds, Options> = {
 
       // - 値が配列やオブジェクトに格納されていたらそれ越しに参照されるとみなして終了
       if (
-        (node.parent.type === "ArrayExpression" && node.parent.elements.includes(node as any)) ||
+        (node.parent.type === "ArrayExpression" && node.parent.elements?.includes(node)) ||
         (node.parent.type === "Property" && node.parent.value === node)
       ) {
         return;
