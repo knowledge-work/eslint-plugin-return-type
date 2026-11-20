@@ -29,7 +29,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "tsc --project tsconfig.build.json",
-    "test": "jest",
+    "test": "vitest run",
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
     "preversion": "echo \"Run check for version $npm_package_version\" && run-s clean build test",
@@ -39,17 +39,15 @@
     "@typescript-eslint/utils": "8.72.2"
   },
   "devDependencies": {
-    "@types/jest": "30.0.0",
     "@types/node": "26.6.6",
     "@typescript-eslint/parser": "8.72.2",
     "@typescript-eslint/rule-tester": "8.72.2",
     "eslint": "10.14.0",
-    "jest": "30.5.2",
     "npm-run-all2": "9.0.4",
     "oxfmt": "0.78.0",
     "rimraf": "6.1.4",
-    "ts-jest": "29.4.15",
-    "typescript": "6.0.3"
+    "typescript": "6.0.3",
+    "vitest": "5.1.0"
   },
   "packageManager": "pnpm@12.20.0"
 }
