@@ -1,36 +1,37 @@
 {
   "name": "eslint-plugin-return-type",
-  "description": "ESlint plugin to enforces the access of specific return types.",
   "version": "1.0.34",
+  "description": "ESlint plugin to enforces the access of specific return types.",
+  "keywords": [
+    "access",
+    "check",
+    "enforce",
+    "eslint",
+    "eslintplugin",
+    "lint",
+    "return",
+    "rule",
+    "type"
+  ],
+  "license": "MIT",
+  "author": "yoshiko-pg",
   "repository": {
     "type": "git",
     "url": "https://github.com/knowledge-work/eslint-plugin-return-type.git"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
-  "keywords": [
-    "eslint",
-    "eslintplugin",
-    "lint",
-    "rule",
-    "check",
-    "return",
-    "type",
-    "enforce",
-    "access"
-  ],
-  "author": "yoshiko-pg",
-  "license": "MIT",
-  "main": "dist/index.js",
   "files": [
     "dist"
   ],
-  "prettier": "prettier-config-kwork",
+  "main": "dist/index.js",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "clean": "rimraf dist",
     "build": "tsc --project tsconfig.build.json",
     "test": "jest",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
     "preversion": "echo \"Run check for version $npm_package_version\" && run-s clean build test",
     "publish": "npm publish . --access public --registry=https://registry.npmjs.org && git push origin main && git push --tags"
   },
@@ -45,8 +46,7 @@
     "eslint": "8.57.1",
     "jest": "30.4.2",
     "npm-run-all2": "6.2.6",
-    "prettier": "3.10.1",
-    "prettier-config-kwork": "0.0.34",
+    "oxfmt": "0.78.0",
     "rimraf": "5.0.10",
     "ts-jest": "29.4.15",
     "typescript": "6.0.3"

@@ -18,24 +18,24 @@
 
 ```ts
 function example() {
-  return new CustomError('reason')
+  return new CustomError("reason");
 }
 ```
 
 ### Incorrect
 
 ```ts
-example()
+example();
 
-await example()
+await example();
 ```
 
 ### Correct
 
 ```ts
-const res = example()
+const res = example();
 
-const res = await example()
+const res = await example();
 
-otherFunction(example())
+otherFunction(example());
 ```
