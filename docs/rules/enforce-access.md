@@ -1,16 +1,24 @@
 # enforce-access
 
-関数などからの返り値が option の typeNames で指定された特定の型とマッチするとき、その値へのアクセスを強制します。
+Enforces that a value returned from a function is accessed when its type matches one of the `typeNames` option.
 
-カスタムエラーの型を指定することによるエラーハンドリングの強制などに使えます。
+It can be used, for example, to enforce error handling by specifying custom error types.
 
-## アクセスとは
+## Options
 
-- 変数へ格納される
-- 配列やオブジェクトへ格納される
-- 別の関数やクラスコンストラクタへ渡される
+- `typeNames`: `string[]`
+  - Each entry is a regular expression that must match the whole type name (for example, `\w*Error` matches `CustomError`).
 
-他、足りない条件があるかもしれないので、足りないものがあれば Pull Request をお待ちしています。
+## What counts as an access
+
+- Assigned to a variable
+- Stored in an array or an object
+- Passed to another function or a class constructor
+- Returned from the enclosing function (the caller is expected to access it)
+
+An `await`ed value is checked at the `await` expression instead.
+
+Some cases may be missing. Pull requests are welcome.
 
 ## Examples
 
