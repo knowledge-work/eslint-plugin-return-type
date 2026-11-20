@@ -68,7 +68,7 @@ export default [
 
 ## Development
 
-Requires Node.js (see `.node-version`) and pnpm (see `packageManager` in `package.json`).
+Requires pnpm (see `packageManager` in `package.json`). pnpm installs the Node.js version in `devEngines.runtime` and runs the scripts with it. Use pnpm instead of npm in this repository.
 
 ```sh
 pnpm install
@@ -80,7 +80,7 @@ pnpm fmt:check
 
 ## Release
 
-The [Publish](.github/workflows/publish.yml) workflow publishes to npm with [trusted publishing](https://docs.npmjs.com/trusted-publishers).
+The [Publish](.github/workflows/publish.yml) workflow publishes to npm with `pnpm publish --provenance` and [trusted publishing](https://docs.npmjs.com/trusted-publishers).
 
 - It runs on the 15th of every month (patch release), or manually from the Actions tab with `patch`, `minor`, or `major`.
 - The job runs in the `npm` environment and waits for approval before publishing.
