@@ -1,5 +1,5 @@
 module.exports = {
   rules: {
-    'enforce-access': require('./rules/enforce-access'),
+    "enforce-access": require("./rules/enforce-access"),
   },
-}
+};

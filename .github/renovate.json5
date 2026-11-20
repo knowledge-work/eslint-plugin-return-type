@@ -1,13 +1,13 @@
 {
   extends: [
-    'config:base',
-    ':disableRateLimiting',
-    ':maintainLockFilesWeekly',
-    ':automergeAll',
-    'group:nodeJs',
-    'helpers:pinGitHubActionDigests',
+    "config:base",
+    ":disableRateLimiting",
+    ":maintainLockFilesWeekly",
+    ":automergeAll",
+    "group:nodeJs",
+    "helpers:pinGitHubActionDigests",
   ],
-  timezone: 'Asia/Tokyo',
-  postUpdateOptions: ['yarnDedupeHighest'],
-  minimumReleaseAge: '7 days',
+  timezone: "Asia/Tokyo",
+  postUpdateOptions: ["yarnDedupeHighest"],
+  minimumReleaseAge: "7 days",
 }

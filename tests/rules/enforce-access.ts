@@ -1,15 +1,15 @@
-import rule from '../../src/rules/enforce-access'
-import { RuleTester } from '@typescript-eslint/rule-tester'
+import rule from "../../src/rules/enforce-access";
+import { RuleTester } from "@typescript-eslint/rule-tester";
 
 export const ruleTester = new RuleTester({
-  parser: require.resolve('@typescript-eslint/parser'),
+  parser: require.resolve("@typescript-eslint/parser"),
   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
+    ecmaVersion: "latest",
+    sourceType: "module",
     tsconfigRootDir: `${__dirname}/../../tests_fixture`,
-    project: '../tsconfig.test.json',
+    project: "../tsconfig.test.json",
   },
-})
+});
 
 const commonCode = `
   type UsecaseResult<T, E extends Error | null> = Ok<T> | Err<E>;
@@ -40,16 +40,16 @@ const commonCode = `
 
   class CustomError extends Error {}
 
-`
+`;
 
-ruleTester.run('enforce-access', rule, {
+ruleTester.run("enforce-access", rule, {
   valid: [
     {
       code: `${commonCode}
         const example = () => usecaseResultError(new Error('error'))
         const res = example();
       `,
-      options: [{ typeNames: ['Err<Error>'] }],
+      options: [{ typeNames: ["Err<Error>"] }],
     },
     {
       code: `${commonCode}
@@ -58,21 +58,21 @@ ruleTester.run('enforce-access', rule, {
         }
         const res = await example();
       `,
-      options: [{ typeNames: ['Err<Error>'] }],
+      options: [{ typeNames: ["Err<Error>"] }],
     },
     {
       code: `${commonCode}
         const example = async () => usecaseResultError(new Error('error'))
         otherFunction(await example());
       `,
-      options: [{ typeNames: ['Err<Error>'] }],
+      options: [{ typeNames: ["Err<Error>"] }],
     },
     {
       code: `${commonCode}
         const example = async () => usecaseResultError(null)
         await example();
       `,
-      options: [{ typeNames: ['Err<Error>'] }],
+      options: [{ typeNames: ["Err<Error>"] }],
     },
     {
       code: `${commonCode}
@@ -81,7 +81,7 @@ ruleTester.run('enforce-access', rule, {
         }
         const res = await example();
       `,
-      options: [{ typeNames: ['Err<Error>'] }],
+      options: [{ typeNames: ["Err<Error>"] }],
     },
     {
       code: `
@@ -90,21 +90,21 @@ ruleTester.run('enforce-access', rule, {
         }
         example();
       `,
-      options: [{ typeNames: ['Error'] }],
+      options: [{ typeNames: ["Error"] }],
     },
     {
       code: `${commonCode}
         const example = () => usecaseResultError(new Error('error'))
         const arr = [example()];
       `,
-      options: [{ typeNames: ['Err<Error>'] }],
+      options: [{ typeNames: ["Err<Error>"] }],
     },
     {
       code: `${commonCode}
         const example = () => usecaseResultError(new Error('error'))
         otherFunction({ result: example() });
       `,
-      options: [{ typeNames: ['Err<Error>'] }],
+      options: [{ typeNames: ["Err<Error>"] }],
     },
   ],
   invalid: [
@@ -113,8 +113,8 @@ ruleTester.run('enforce-access', rule, {
         const example = () => usecaseResultError(new Error('error'))
         example();
       `,
-      options: [{ typeNames: ['Err<Error>'] }],
-      errors: [{ messageId: 'enforceAccess' }],
+      options: [{ typeNames: ["Err<Error>"] }],
+      errors: [{ messageId: "enforceAccess" }],
     },
     {
       code: `${commonCode}
@@ -123,16 +123,16 @@ ruleTester.run('enforce-access', rule, {
         }
         example();
       `,
-      options: [{ typeNames: ['Err<Error>'] }],
-      errors: [{ messageId: 'enforceAccess' }],
+      options: [{ typeNames: ["Err<Error>"] }],
+      errors: [{ messageId: "enforceAccess" }],
     },
     {
       code: `${commonCode}
         const example = async () => usecaseResultError(new Error('error'))
         await example();
       `,
-      options: [{ typeNames: ['Err<Error>'] }],
-      errors: [{ messageId: 'enforceAccess' }],
+      options: [{ typeNames: ["Err<Error>"] }],
+      errors: [{ messageId: "enforceAccess" }],
     },
     {
       code: `${commonCode}
@@ -141,8 +141,8 @@ ruleTester.run('enforce-access', rule, {
         }
         await example();
       `,
-      options: [{ typeNames: ['Err<Error>'] }],
-      errors: [{ messageId: 'enforceAccess' }],
+      options: [{ typeNames: ["Err<Error>"] }],
+      errors: [{ messageId: "enforceAccess" }],
     },
     {
       code: `${commonCode}
@@ -150,8 +150,8 @@ ruleTester.run('enforce-access', rule, {
           usecaseResultError(new Error('error'))
         }
       `,
-      options: [{ typeNames: ['Err<Error>'] }],
-      errors: [{ messageId: 'enforceAccess' }],
+      options: [{ typeNames: ["Err<Error>"] }],
+      errors: [{ messageId: "enforceAccess" }],
     },
     {
       code: `${commonCode}
@@ -160,8 +160,8 @@ ruleTester.run('enforce-access', rule, {
         }
         await example()
       `,
-      options: [{ typeNames: ['Err<\\w*Error>'] }],
-      errors: [{ messageId: 'enforceAccess' }],
+      options: [{ typeNames: ["Err<\\w*Error>"] }],
+      errors: [{ messageId: "enforceAccess" }],
     },
     {
       code: `${commonCode}
@@ -170,8 +170,8 @@ ruleTester.run('enforce-access', rule, {
         }
         example();
       `,
-      options: [{ typeNames: ['\\w*Error'] }],
-      errors: [{ messageId: 'enforceAccess' }],
+      options: [{ typeNames: ["\\w*Error"] }],
+      errors: [{ messageId: "enforceAccess" }],
     },
   ],
-})
+});
