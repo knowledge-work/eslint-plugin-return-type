@@ -1,0 +1,6 @@
+saveExact: true
+minimumReleaseAge: 10080 # 7 days
+trustPolicy: no-downgrade
+allowBuilds:
+  "@parcel/watcher": false
+  unrs-resolver: false
