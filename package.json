@@ -35,13 +35,11 @@
     "preversion": "echo \"Run check for version $npm_package_version\" && run-s clean build test",
     "publish": "npm publish . --access public --registry=https://registry.npmjs.org && git push origin main && git push --tags"
   },
-  "dependencies": {
-    "@typescript-eslint/utils": "8.72.2"
-  },
   "devDependencies": {
     "@types/node": "26.6.6",
     "@typescript-eslint/parser": "8.72.2",
     "@typescript-eslint/rule-tester": "8.72.2",
+    "@typescript-eslint/utils": "8.72.2",
     "eslint": "10.14.0",
     "npm-run-all2": "9.0.4",
     "oxfmt": "0.78.0",

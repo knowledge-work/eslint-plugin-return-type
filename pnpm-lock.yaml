@@ -165,10 +165,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      '@typescript-eslint/utils':
-        specifier: 8.72.2
-        version: 8.72.2(eslint@10.14.0(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)
     devDependencies:
       '@types/node':
         specifier: 26.6.6
@@ -177,6 +173,9 @@ importers:
         specifier: 8.72.2
         version: 8.72.2(eslint@10.14.0(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)
       '@typescript-eslint/rule-tester':
+        specifier: 8.72.2
+        version: 8.72.2(eslint@10.14.0(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)
+      '@typescript-eslint/utils':
         specifier: 8.72.2
         version: 8.72.2(eslint@10.14.0(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)
       eslint:
