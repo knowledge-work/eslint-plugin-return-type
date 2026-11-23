@@ -41,7 +41,7 @@
     "@typescript-eslint/rule-tester": "8.72.2",
     "eslint": "10.15.0",
     "npm-run-all2": "9.0.4",
-    "oxfmt": "0.78.0",
+    "oxfmt": "0.79.0",
     "rimraf": "6.1.4",
     "typescript": "6.0.3",
     "vitest": "5.1.0"
